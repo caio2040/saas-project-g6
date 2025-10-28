@@ -59,6 +59,9 @@ coverage/
 # Node modules (if using any JS tools)
 node_modules/
 
+# GitHub workflows and configurations
+.github/
+
 # Environment variables
 .env
 .env.local
