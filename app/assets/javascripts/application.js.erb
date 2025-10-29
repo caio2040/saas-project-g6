@@ -11,14 +11,22 @@ window.ReactDOM = ReactDOM;
 window.Babel = Babel;
 
 document.addEventListener("DOMContentLoaded", function () {
+  const appLayoutUrl    = "<%= asset_path('components/AppLayout.jsx') %>";
+  const appHeaderUrl    = "<%= asset_path('components/AppHeader.jsx') %>";
+  const appSidebarUrl   = "<%= asset_path('components/AppSidebar.jsx') %>";
+  const appContentUrl   = "<%= asset_path('components/AppContent.jsx') %>";
+  const appFooterUrl    = "<%= asset_path('components/AppFooter.jsx') %>";
+  const newsCardUrl     = "<%= asset_path('components/NewsCard.jsx') %>";
+  const newsFeedUrl     = "<%= asset_path('components/NewsFeed.jsx') %>";
+
   Promise.all([
-    fetch("/assets/components/AppLayout.jsx").then((response) => response.text()),
-    fetch("/assets/components/AppHeader.jsx").then((response) => response.text()),
-    fetch("/assets/components/AppSidebar.jsx").then((response) => response.text()),
-    fetch("/assets/components/AppContent.jsx").then((response) => response.text()),
-    fetch("/assets/components/AppFooter.jsx").then((response) => response.text()),
-    fetch("/assets/components/NewsCard.jsx").then((response) => response.text()),
-    fetch("/assets/components/NewsFeed.jsx").then((response) => response.text()),
+    fetch(appLayoutUrl).then((r) => r.text()),
+    fetch(appHeaderUrl).then((r) => r.text()),
+    fetch(appSidebarUrl).then((r) => r.text()),
+    fetch(appContentUrl).then((r) => r.text()),
+    fetch(appFooterUrl).then((r) => r.text()),
+    fetch(newsCardUrl).then((r) => r.text()),
+    fetch(newsFeedUrl).then((r) => r.text()),
   ])
     .then(
       ([appLayoutCode, appHeaderCode, appSidebarCode, appContentCode, appFooterCode, newsCardCode, newsFeedCode]) => {
@@ -47,3 +55,5 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error loading JSX files:", error);
     });
 });
+
+
