@@ -13,6 +13,7 @@ Rails.application.config.assets.version = "1.0"
 
 # Explicitly register JSX files as assets so they can be fetched via asset_path in production
 Rails.application.config.assets.precompile += %w[
+  application.js
   components/AppLayout.jsx
   components/AppHeader.jsx
   components/AppSidebar.jsx
