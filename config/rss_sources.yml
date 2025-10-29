@@ -1,0 +1,9 @@
+sources:
+  - name: "CoinDesk"
+    url: "https://coindesk.com/arc/outboundfeeds/rss/"
+  - name: "CoinTelegraph"
+    url: "https://cointelegraph.com/rss"
+  - name: "Decrypt"
+    url: "https://decrypt.co/feed"
+  - name: "The Block"
+    url: "https://www.theblock.co/rss.xml"

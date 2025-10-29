@@ -10,5 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 0) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_29_040317) do
+  create_table "news_articles", force: :cascade do |t|
+    t.string "title"
+    t.text "subtitle"
+    t.string "original_url"
+    t.datetime "published_at"
+    t.string "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_news_articles_on_title", unique: true
+  end
 end

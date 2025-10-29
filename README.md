@@ -1,24 +1,43 @@
-# README
+# Crypto News Aggregator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A real-time cryptocurrency news aggregator built with Rails and React that crawls RSS feeds from major crypto news sources.
 
-Things you may want to cover:
+## Team Members
 
-* Ruby version
+- Yonseung Choi (yc3763)
+- Charlie Mei (jm5912)
 
-* System dependencies
+## Prerequisites
 
-* Configuration
+Before you begin, ensure you have the following installed:
 
-* Database creation
+- **Ruby** 3.4.7 (see `.ruby-version`)
+- **SQLite3** (version 3.8.0 or higher)
 
-* Database initialization
+## Getting Started
 
-* How to run the test suite
+### 1. Install Ruby Dependencies
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+# Install bundler if not already installed
+gem install bundler
 
-* Deployment instructions
+# Install all gem dependencies
+bundle install
+```
 
-* ...
+### 2. Set Up the Database
+
+```bash
+# Create database, load schema, and run migrations
+rails db:create db:migrate
+```
+
+### 3. Start the Server
+
+```bash
+# Start the Rails development server
+rails server
+```
+
+The application will be available at `http://localhost:3000`
