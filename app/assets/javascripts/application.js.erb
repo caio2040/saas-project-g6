@@ -1,16 +1,9 @@
-//= require react
 //= require react_ujs
 //= require components
 
-import React from "react";
-import ReactDOM from "react-dom";
-import Babel from "@babel/standalone";
-
-window.React = React;
-window.ReactDOM = ReactDOM;
-window.Babel = Babel;
-
 document.addEventListener("DOMContentLoaded", function () {
+  console.log("Application.js loaded, React:", typeof window.React, "ReactDOM:", typeof window.ReactDOM, "Babel:", typeof window.Babel);
+  
   const appLayoutUrl    = "<%= asset_path('components/AppLayout.jsx') %>";
   const appHeaderUrl    = "<%= asset_path('components/AppHeader.jsx') %>";
   const appSidebarUrl   = "<%= asset_path('components/AppSidebar.jsx') %>";
@@ -19,14 +12,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const newsCardUrl     = "<%= asset_path('components/NewsCard.jsx') %>";
   const newsFeedUrl     = "<%= asset_path('components/NewsFeed.jsx') %>";
 
+  console.log("Fetching JSX components from:", {
+    appLayoutUrl, appHeaderUrl, appSidebarUrl, appContentUrl, 
+    appFooterUrl, newsCardUrl, newsFeedUrl
+  });
+
   Promise.all([
-    fetch(appLayoutUrl).then((r) => r.text()),
-    fetch(appHeaderUrl).then((r) => r.text()),
-    fetch(appSidebarUrl).then((r) => r.text()),
-    fetch(appContentUrl).then((r) => r.text()),
-    fetch(appFooterUrl).then((r) => r.text()),
-    fetch(newsCardUrl).then((r) => r.text()),
-    fetch(newsFeedUrl).then((r) => r.text()),
+    fetch(appLayoutUrl).then((r) => { console.log("AppLayout fetch:", r.status, r.ok); return r.ok ? r.text() : Promise.reject(new Error("Failed to fetch AppLayout: " + r.status)); }),
+    fetch(appHeaderUrl).then((r) => { console.log("AppHeader fetch:", r.status, r.ok); return r.ok ? r.text() : Promise.reject(new Error("Failed to fetch AppHeader: " + r.status)); }),
+    fetch(appSidebarUrl).then((r) => { console.log("AppSidebar fetch:", r.status, r.ok); return r.ok ? r.text() : Promise.reject(new Error("Failed to fetch AppSidebar: " + r.status)); }),
+    fetch(appContentUrl).then((r) => { console.log("AppContent fetch:", r.status, r.ok); return r.ok ? r.text() : Promise.reject(new Error("Failed to fetch AppContent: " + r.status)); }),
+    fetch(appFooterUrl).then((r) => { console.log("AppFooter fetch:", r.status, r.ok); return r.ok ? r.text() : Promise.reject(new Error("Failed to fetch AppFooter: " + r.status)); }),
+    fetch(newsCardUrl).then((r) => { console.log("NewsCard fetch:", r.status, r.ok); return r.ok ? r.text() : Promise.reject(new Error("Failed to fetch NewsCard: " + r.status)); }),
+    fetch(newsFeedUrl).then((r) => { console.log("NewsFeed fetch:", r.status, r.ok); return r.ok ? r.text() : Promise.reject(new Error("Failed to fetch NewsFeed: " + r.status)); }),
   ])
     .then(
       ([appLayoutCode, appHeaderCode, appSidebarCode, appContentCode, appFooterCode, newsCardCode, newsFeedCode]) => {
@@ -47,12 +45,14 @@ document.addEventListener("DOMContentLoaded", function () {
         eval(compiledNewsFeed);
 
         if (window.AppLayout) {
-          ReactDOM.render(React.createElement(window.AppLayout), document.getElementById("react-root"));
+          window.ReactDOM.render(window.React.createElement(window.AppLayout), document.getElementById("react-root"));
         }
       }
     )
     .catch((error) => {
       console.error("Error loading JSX files:", error);
+      console.error("Full error details:", error.message, error.stack);
+      document.getElementById("react-root").innerHTML = "<div style='padding: 20px; text-align: center;'><h2>Failed to load application</h2><p>Error: " + error.message + "</p><p>Check browser console for details.</p></div>";
     });
 });
 
