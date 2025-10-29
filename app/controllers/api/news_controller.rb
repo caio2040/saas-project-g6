@@ -11,9 +11,11 @@ class Api::NewsController < ApplicationController
     end
     
     # Return paginated articles
-    articles = NewsArticle.order(published_at: :desc)
-                         .limit(per_page)
-                         .offset((page - 1) * per_page)
+    articles_query = NewsArticle.order(published_at: :desc)
+    total_count = articles_query.count
+    articles = articles_query.limit(per_page)
+                             .offset((page - 1) * per_page)
+                             .to_a
     
     render json: {
       articles: articles.map do |article|
@@ -26,9 +28,9 @@ class Api::NewsController < ApplicationController
           source: article.source
         }
       end,
-      has_more: articles.count == per_page,
+      has_more: (page * per_page) < total_count,
       current_page: page,
-      total_count: NewsArticle.count
+      total_count: total_count
     }
   end
 end
