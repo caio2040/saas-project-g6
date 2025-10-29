@@ -11,7 +11,7 @@ A real-time cryptocurrency news aggregator built with Rails and React that crawl
 
 Before you begin, ensure you have the following installed:
 
-- **Ruby** 3.4.7 (see `.ruby-version`)
+- **Ruby** 3.3.9 (see `.ruby-version`)
 - **SQLite3** (version 3.8.0 or higher)
 
 ## Getting Started (Locally)
@@ -45,7 +45,7 @@ This project uses RSpec and Cucumber for testing.
 ### Running Tests
 
 ```bash
-# Run all tests
+# Run all tests with following command
 bundle exec rspec
 bundle exec cucumber
 
@@ -70,7 +70,7 @@ bundle exec cucumber
 
 ### Test Results (Expected Output)
 
-After running the full suites, you should see all tests passing (green):
+After running the commands above, you should see all tests passing (green):
 
 ```bash
 bundle exec rspec    # All examples pass
@@ -85,6 +85,8 @@ Finished in 0.32138 seconds (files took 0.99117 seconds to load)
 
 Coverage report generated for RSpec to /Users/charliemei/Desktop/saas-project-g6/coverage.
 Line Coverage: 85.11% (80 / 94)
+```
+```
 bundle exec cucumber # All scenarios pass, 0 failures
 ...
 # 10
