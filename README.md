@@ -130,24 +130,37 @@ Heroku Link (so you don't have to build the app yourself):
    heroku login -i
    ```
 
-2. Create the app and add Postgres:
+2. Create/select the app and add Postgres:
    ```bash
+   # Create a new app (or skip if using an existing one like crypto-saas-iter1)
    heroku create
-   
+   # Or target an existing app
+   # heroku git:remote -a crypto-saas-iter1
+
+   # Ensure Postgres is provisioned
+   heroku addons:create heroku-postgresql:mini
    ```
 
-3. Deploy:
+3. Configure required environment variables:
+   ```bash
+   # Needed because config/credentials.yml.enc exists
+   heroku config:set RAILS_MASTER_KEY="$(cat config/master.key)"
+   ```
+
+4. Deploy:
    ```bash
    git push heroku main
    ```
 
-4. Run database setup and open the app:
+5. Run database setup and open the app:
    ```bash
-   heroku run rails db:migrate
-   heroku run rails db:seed
+   heroku run "bin/rails db:migrate"
+   # Optionally trigger an initial crawl to populate articles immediately
+   heroku run "bin/rails runner 'NewsCrawlerService.new.crawl_all_sources'"
    heroku open
    ```
 
 Notes:
 - Production uses PostgreSQL (`pg` gem) and `DATABASE_URL`; development/test use SQLite.
 - The `Procfile` runs Puma via `config/puma.rb`.
+ - Hitting `GET /api/news` on page 1 triggers a crawl automatically as well.
