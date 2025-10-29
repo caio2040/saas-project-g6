@@ -145,6 +145,7 @@ Heroku Link (so you don't have to build the app yourself):
    ```bash
    # Needed because config/credentials.yml.enc exists
    heroku config:set RAILS_MASTER_KEY="$(cat config/master.key)"
+   heroku addons:create heroku-postgresql -a crypto-saas-iter1 
    ```
 
 4. Deploy:
