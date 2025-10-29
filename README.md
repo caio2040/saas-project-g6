@@ -26,14 +26,14 @@ bundle install
 ### 2. Set Up the Database
 
 ```bash
-rails db:create 
+rails db:create
 rails db:migrate
 ```
 
 ### 3. Start the Server
 
 ```bash
-bin/rails server
+rails server
 ```
 
 The application will be available at `http://localhost:3000`

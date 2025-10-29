@@ -239,6 +239,13 @@ GEM
     parser (3.3.10.0)
       ast (~> 2.4.1)
       racc
+    pg (1.6.2)
+    pg (1.6.2-aarch64-linux)
+    pg (1.6.2-aarch64-linux-musl)
+    pg (1.6.2-arm64-darwin)
+    pg (1.6.2-x86_64-darwin)
+    pg (1.6.2-x86_64-linux)
+    pg (1.6.2-x86_64-linux-musl)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -442,6 +449,7 @@ DEPENDENCIES
   httparty
   importmap-rails
   jbuilder
+  pg (>= 1.5)
   puma (>= 5.0)
   rails (~> 7.2.1)
   react-rails
@@ -456,6 +464,9 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webmock
+
+RUBY VERSION
+   ruby 3.3.9p170
 
 BUNDLED WITH
    2.6.9
