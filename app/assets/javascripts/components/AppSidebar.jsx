@@ -8,7 +8,7 @@ function AppSidebar({ collapsed }) {
   ];
 
   const handleMenuClick = (item) => {
-    alert(`Selected: ${item.name}`);
+    alert(`This feature will be available in the next iteration`);
   };
 
   return (

@@ -67,4 +67,13 @@ group :test do
   gem "cucumber-rails"
   gem "factory_bot_rails"
   gem "faker"
+  
+  # Code coverage
+  gem "simplecov", require: false
+  
+  # HTTP request mocking
+  gem "webmock"
+  
+  # Database cleaner for Cucumber tests
+  gem "database_cleaner-active_record"
 end

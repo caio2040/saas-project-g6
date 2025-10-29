@@ -7,7 +7,7 @@ A real-time cryptocurrency news aggregator built with Rails and React that crawl
 - Yonseung Choi (yc3763)
 - Charlie Mei (jm5912)
 
-## Prerequisites
+## Requirements
 
 Before you begin, ensure you have the following installed:
 
@@ -19,25 +19,33 @@ Before you begin, ensure you have the following installed:
 ### 1. Install Ruby Dependencies
 
 ```bash
-# Install bundler if not already installed
 gem install bundler
-
-# Install all gem dependencies
 bundle install
 ```
 
 ### 2. Set Up the Database
 
 ```bash
-# Create database, load schema, and run migrations
 rails db:create db:migrate
 ```
 
 ### 3. Start the Server
 
 ```bash
-# Start the Rails development server
 rails server
 ```
 
 The application will be available at `http://localhost:3000`
+
+## Testing
+
+This project uses RSpec and Cucumber for testing.
+
+### Running Tests
+
+```bash
+# Run all tests
+bundle exec rspec
+bundle exec cucumber
+
+```

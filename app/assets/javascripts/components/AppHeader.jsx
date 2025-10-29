@@ -30,6 +30,7 @@ function AppHeader({ onToggleSidebar }) {
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
         <button
+          onClick={() => alert("This feature will be available in the next iteration")}
           style={{
             padding: "8px 16px",
             backgroundColor: "#3498db",

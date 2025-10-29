@@ -75,7 +75,7 @@ class NewsCrawlerService
 
   def extract_subtitle(entry)
     # Try different fields for subtitle/description
-    content = entry.summary || entry.content || entry.description || ""
+    content = entry.summary || entry.content || (entry.respond_to?(:description) ? entry.description : nil) || ""
     
     # Remove HTML tags and clean up the text
     content = strip_html_tags(content)
