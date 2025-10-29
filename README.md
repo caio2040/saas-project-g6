@@ -123,33 +123,28 @@ Notes:
 ## Deployment (Heroku)
 
 This app is configured for Heroku (PostgreSQL in production).
+Heroku Link (so you don't have to build the app yourself): 
 
 1. Ensure you have the Heroku CLI and are logged in:
    ```bash
-   brew tap heroku/brew && brew install heroku
-   heroku login
+   heroku login -i
    ```
 
 2. Create the app and add Postgres:
    ```bash
    heroku create
-   heroku addons:create heroku-postgresql:mini
+   
    ```
 
-3. Set required environment variables:
-   ```bash
-   # Needed because config/credentials.yml.enc is present
-   heroku config:set RAILS_MASTER_KEY="$(cat config/master.key)"
-   ```
-
-4. Deploy:
+3. Deploy:
    ```bash
    git push heroku main
    ```
 
-5. Run database setup and open the app:
+4. Run database setup and open the app:
    ```bash
    heroku run rails db:migrate
+   heroku run rails db:seed
    heroku open
    ```
 
