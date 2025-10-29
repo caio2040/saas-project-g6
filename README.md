@@ -122,17 +122,19 @@ Notes:
 
 ## Deployment (Heroku)
 
-This app is configured for Heroku (PostgreSQL in production).
-Heroku Link (so you don't have to build the app yourself): 
+We have also deployed the app in Heroku and below is the link:
+https://crypto-saas-iter1-4dff5e2f8211.herokuapp.com/
+
+You can also try building it by following the instructions below
 
 1. Ensure you have the Heroku CLI and are logged in:
    ```bash
-   heroku login -i
+   heroku login -i ## and enter your login credentials
    ```
 
 2. Create/select the app and add Postgres:
    ```bash
-   heroku create crypto-saas-iter1
+   heroku create crypto-saas-iter1 ## skip this step if you have created the project already
    heroku git:remote -a crypto-saas-iter1
    ```
 
@@ -151,8 +153,6 @@ Heroku Link (so you don't have to build the app yourself):
 5. Run database setup and open the app:
    ```bash
    heroku run rails db:migrate
-   heroku run rails db:seed
-   # Optionally trigger an initial crawl to populate articles immediately
-   heroku run "bin/rails runner 'NewsCrawlerService.new.crawl_all_sources'"
    heroku open
    ```
+
