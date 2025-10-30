@@ -2,6 +2,8 @@
 
 A real-time cryptocurrency news aggregator built with Rails and React that crawls RSS feeds from major crypto news sources.
 
+The Github Repository including all of the code: https://github.com/caio2040/saas-project-g6
+
 ## Team Members
 
 - Yonseung Choi (yc3763)
